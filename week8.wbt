@@ -1,0 +1,114 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.03982271061892099 -0.08318371448216613 0.9957382293373651 0.9112091126293858
+  position -0.3964448984260496 -0.594515531536651 -0.14754088362190024
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Robot {
+  children [
+    DEF badan Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.25 0.2 0.1
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation 0.07 0.11 -0.05
+        rotation 1 0 0 1.5700003061004253
+        children [
+          DEF roda Shape {
+            appearance PBRAppearance {
+              baseColor 0 1 1
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.05
+            }
+          }
+        ]
+        boundingObject USE roda
+        physics DEF pyh_roda Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation -0.07 0.1 -0.05
+        rotation 1 0 0 1.5699996938995748
+        children [
+          USE roda
+        ]
+        name "solid(1)"
+        boundingObject USE roda
+        physics USE pyh_roda
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation 0.07 -0.1 -0.05
+        rotation 1 0 0 1.57
+        children [
+          USE roda
+        ]
+        name "solid(2)"
+        boundingObject USE roda
+        physics USE pyh_roda
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation -0.07 -0.1 -0.05
+        rotation 1 0 0 1.57
+        children [
+          USE roda
+        ]
+        name "solid(3)"
+        boundingObject USE roda
+        physics USE pyh_roda
+      }
+    }
+  ]
+  boundingObject USE badan
+  physics Physics {
+  }
+}
